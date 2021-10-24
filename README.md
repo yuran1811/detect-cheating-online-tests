@@ -4,3 +4,4 @@
 #### When you are away from the website:
 + [x] Display the number of times you're away
 + [x] Display the time you're away
++ [x] The page title will also change when you get away
