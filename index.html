@@ -4,12 +4,15 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="icon" href="https://cdn.pixabay.com/photo/2012/04/18/00/20/globe-36242_640.png"/>
+		<link rel="stylesheet" href="style.css"/>
         <title>U r here</title>
     </head>
     <body>
-        <div class="cnt-times">Số lần bạn thoát khỏi trang này: </div>
-        <div class="cnt">0</div>
-        <div class="time"></div>
+    	<div class="nav-bar">Detect Cheating</div>
+        <div class="log-times">Số lần bạn thoát khỏi trang này: <span class="cnt">0</span></div>
+        <div class="history"> Lịch sử thoát trang:
+	        <div class="time"></div>
+        </div>
     </body>
     <script>
         var cnt = 0;
@@ -18,7 +21,7 @@
                 document.title = "U r away";
                 document.querySelector('.cnt').innerHTML = ++cnt;
                 var today = new Date();
-                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                var time = today.getHours() + "h " + today.getMinutes() + "min " + today.getSeconds() + "s";
                 document.querySelector('.time').insertAdjacentHTML("beforeend", time);
                 document.querySelector('.time').insertAdjacentHTML("beforeend", "<br>");
             } else document.title = "U r here";
