@@ -1,0 +1,31 @@
+.nav-bar
+{
+	background-color: #37C7CC;
+	color: #2F526B;
+	font-size: 50px;
+	height: auto;
+	text-align: center;
+	width: 100%;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+}
+
+.log-times, .history
+{
+	font-size: 25px;
+	margin-top: 2%;
+	text-align: center;
+}
+
+.cnt
+{
+	color: red;
+	font-size: 27px;
+	font-weight: bold;
+}
+
+.time
+{
+	font-size: 25px;
+	text-align: center;
+}
