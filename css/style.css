@@ -309,25 +309,25 @@ p
 {
 	#nav-bar
 	{
-		font-size: 35px;
+		font-size: 30px;
 		letter-spacing: 7px;
 	}
 
 	#log-times
 	{
 		font-size: 14px;
-		top: 80px;
+		top: 60px;
 	}
 
 	#history
 	{
 		font-size: 14px;
-		top: 100px;
+		top: 80px;
 	}
 
 	.cnt
 	{
-		font-size: 35px;
+		font-size: 25px;
 		margin-left: 15px;
 	}
 
