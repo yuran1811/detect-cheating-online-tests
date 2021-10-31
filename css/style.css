@@ -305,6 +305,35 @@ p
 	}
 }
 
+@media (max-width: 720px)
+{
+	#nav-bar
+	{
+		font-size: 35px;
+		letter-spacing: 7px;
+	}
+
+	#log-times
+	{
+		font-size: 14px;
+		top: 80px;
+	}
+
+	#history
+	{
+		font-size: 14px;
+		top: 100px;
+	}
+
+	.cnt
+	{
+		font-size: 35px;
+		margin-left: 15px;
+	}
+
+	p {font-size: 14px;}
+}
+
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	.loader {
 		background: -moz-linear-gradient(40deg, #f00050, #2380ff) !important;
