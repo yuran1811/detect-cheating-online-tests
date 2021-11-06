@@ -1,67 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link rel="icon" href="https://cdn.pixabay.com/photo/2012/04/18/00/20/globe-36242_640.png"/>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<title>U r here</title>
-	</head>
-	<body>
-		<div id="nav-bar">Detect Cheating</div>
-		<div class="content">
-			<div id="log-times">Số lần bạn thoát khỏi trang này:<span class="cnt">0</span></div>
-			<div id="history"> Lịch sử thoát trang:
-				<div class="container"></div>
-			</div>
-		</div>
-	</body>
-	<script> const navBar = document.querySelector('#nav-bar');
-		navBar.addEventListener('mousedown', (e) =>
-		{
-			document.body.classList.toggle('dark');
-		});
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      href="https://cdn.pixabay.com/photo/2012/04/18/00/20/globe-36242_640.png"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>U r here</title>
+  </head>
+  <body>
+    <div id="nav-bar">Detect Cheating</div>
+    <div class="content">
+      <div id="log-times">
+        Số lần bạn thoát khỏi trang này:<span class="cnt">0</span>
+      </div>
+      <div id="history">
+        Lịch sử thoát trang:
+        <div class="container"></div>
+      </div>
+    </div>
+    <script>
+      const navBar = document.querySelector('#nav-bar');
+      navBar.addEventListener('mousedown', (e) => {
+        document.body.classList.toggle('dark');
+      });
 
-		function magicMouse(e)
-		{
-			var to_append = document.getElementsByClassName('loader-container')[0];
-			var all = document.getElementsByClassName('loader-container');
+      function magicMouse(e) {
+        var to_append = document.getElementsByClassName('loader-container')[0];
+        var all = document.getElementsByClassName('loader-container');
 
-			var parent_div = document.createElement('div');
-			parent_div.className = "loader-container";
+        var parent_div = document.createElement('div');
+        parent_div.className = 'loader-container';
 
-			var inner_div = document.createElement('div');
-			inner_div.className = "loader";
-			parent_div.appendChild(inner_div)
-			var d = document.body.appendChild(parent_div);
+        var inner_div = document.createElement('div');
+        inner_div.className = 'loader';
+        parent_div.appendChild(inner_div);
+        var d = document.body.appendChild(parent_div);
 
-			parent_div.style.left = (e.clientX - 50)+'px';
-			parent_div.style.top = (e.clientY - 50)+'px';
+        parent_div.style.left = e.clientX - 50 + 'px';
+        parent_div.style.top = e.clientY - 50 + 'px';
 
-			if (document.getElementsByClassName('loader-container').length > 60)
-				document.body.removeChild(to_append);
-		}
+        if (document.getElementsByClassName('loader-container').length > 30)
+          document.body.removeChild(to_append);
+      }
 
-		document.querySelector('.content').addEventListener("mousemove", (e) => magicMouse(e));
+      document
+        .querySelector('.content')
+        .addEventListener('mousemove', (e) => magicMouse(e));
 
-		var cnt = 0;
-		document.addEventListener("visibilitychange", function() {
-			if (document.hidden) {
-				var today = new Date();
-				var time = today.getHours() + "h " + today.getMinutes() + "min " + today.getSeconds() + "s";
-				document.title = "U r away";
-				document.querySelector('.cnt').innerHTML = ++cnt;
+      var cnt = 0;
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          var today = new Date();
+          var time =
+            today.getHours() +
+            'h ' +
+            today.getMinutes() +
+            'min ' +
+            today.getSeconds() +
+            's';
+          document.title = 'U r away';
+          document.querySelector('.cnt').innerHTML = ++cnt;
 
-				// document.querySelector('.time').insertAdjacentHTML("beforeend", time + "<br>");
+          const para = document.createElement('p');
+          const node = document.createTextNode(time);
+          para.appendChild(node);
 
-				const para = document.createElement("p");
-				const node = document.createTextNode(time);
-				para.appendChild(node);
-
-				const containerHistory = document.querySelector('.container');
-				const contentHistory = document.querySelector('.time');
-				containerHistory.insertBefore(para, contentHistory);
-			} else document.title = "U r here";
-		});
-	</script>
+          const containerHistory = document.querySelector('.container');
+          const contentHistory = document.querySelector('.time');
+          containerHistory.insertBefore(para, contentHistory);
+        } else document.title = 'U r here';
+      });
+    </script>
+  </body>
 </html>
