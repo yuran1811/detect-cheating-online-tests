@@ -17,7 +17,7 @@
 				Số lần bạn thoát khỏi trang này:<span class="cnt">0</span>
 			</div>
 			<div id="history">
-				Lịch sử thoát trang:
+				<div class="title">Lịch sử thoát trang:</div>
 				<div class="container"></div>
 			</div>
 		</div>
@@ -71,17 +71,11 @@
 					$('.cnt').innerHTML = ++cnt;
 
 					var today = new Date();
-					var time =
-						today.getHours() +
-						'h ' +
-						today.getMinutes() +
-						'min ' +
-						today.getSeconds() +
-						's';
+					var time = `${today.toLocaleDateString()} : ${today.getHours()}h ${today.getMinutes()}min ${today.getSeconds()}s`;
 
 					$('.container').innerHTML =
 						`<p>
-							<span style="color: var(--color2)">${cnt}/</span> ${time}</p>` +
+							<span style="color: var(--color2)">${cnt}.</span> ${time}</p>` +
 						$('.container').innerHTML;
 
 					localStorage.setItem(
