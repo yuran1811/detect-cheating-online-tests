@@ -7,7 +7,7 @@
 			rel="icon"
 			href="https://cdn.pixabay.com/photo/2012/04/18/00/20/globe-36242_640.png"
 		/>
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<title>U r here</title>
 	</head>
 	<body>
@@ -27,55 +27,55 @@
 			const $ = document.querySelector.bind(document);
 			const $$ = document.querySelectorAll.bind(document);
 
-			$('#nav-bar').addEventListener('mousedown', (e) => {
+			$('#nav-bar').onclick = () =>
 				document.body.classList.toggle('dark');
-			});
 
-			function magicMouse(e) {
-				var to_append = $$('.loader-container')[0];
-				var all = $$('.loader-container');
+			// Hover Animation
+			const magicMouse = (e) => {
+				const loaders = $$('.loader-container');
+				const fiChild = loaders[loaders.length - 1];
+				const parDiv = document.createElement('div');
+				const childDiv = document.createElement('div');
+				parDiv.className = 'loader-container';
+				childDiv.className = 'loader';
 
-				var parent_div = document.createElement('div');
-				parent_div.className = 'loader-container';
+				parDiv.appendChild(childDiv);
+				document.body.insertAdjacentElement('afterbegin', parDiv);
 
-				var inner_div = document.createElement('div');
-				inner_div.className = 'loader';
-				parent_div.appendChild(inner_div);
-				var d = document.body.appendChild(parent_div);
+				parDiv.style.left = e.clientX - 50 + 'px';
+				parDiv.style.top = e.clientY - 50 + 'px';
 
-				parent_div.style.left = e.clientX - 50 + 'px';
-				parent_div.style.top = e.clientY - 50 + 'px';
+				if ($$('.loader-container').length > 45)
+					document.body.removeChild(fiChild);
+			};
+			$('.content').onmousemove = magicMouse;
 
-				if ($$('.loader-container').length > 30)
-					document.body.removeChild(to_append);
-			}
-			$('.content').addEventListener('mousemove', (e) => magicMouse(e));
-
-			var historyTrack = localStorage.getItem('historyTrack')
+			// History Handle
+			const historyTrack = localStorage.getItem('historyTrack')
 				? JSON.parse(localStorage.getItem('historyTrack'))
 				: '';
-			var cnt = JSON.parse(localStorage.getItem('history')) || 0;
+			let cnt = JSON.parse(localStorage.getItem('history')) || 0;
 			$('.container').innerHTML = historyTrack;
 			$('.cnt').innerHTML = cnt;
 
-			$('.clear-btn').addEventListener('click', () => {
+			$('.clear-btn').onclick = () => {
 				localStorage.setItem('historyTrack', '');
 				localStorage.setItem('history', '0');
 				$('.container').innerHTML = '';
 				$('.cnt').innerHTML = cnt = 0;
-			});
+			};
 
-			document.addEventListener('visibilitychange', () => {
+			// Away Handle
+			document.onvisibilitychange = () => {
 				if (document.hidden) {
 					document.title = 'U r away';
 					$('.cnt').innerHTML = ++cnt;
 
-					var today = new Date();
-					var time = `${today.toLocaleDateString()} : ${today.getHours()}h ${today.getMinutes()}min ${today.getSeconds()}s`;
+					const today = new Date();
+					const time = `${today.toLocaleDateString()} : ${today.getHours()}h ${today.getMinutes()}min ${today.getSeconds()}s`;
 
 					$('.container').innerHTML =
-						`<p>
-							<span style="color: var(--color2)">${cnt}.</span> ${time}</p>` +
+						`<p><span style="color:var(--color2)">${cnt}.</span> ${time}</p>` +
 						$('.container').innerHTML;
 
 					localStorage.setItem(
@@ -87,7 +87,7 @@
 						JSON.stringify($('.container').innerHTML)
 					);
 				} else document.title = 'U r here';
-			});
+			};
 		</script>
 	</body>
 </html>
